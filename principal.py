@@ -36,6 +36,7 @@ def main():
 
     # Elegir un producto, [producto, calidad, precio]
     producto = dameProducto(lista_productos, MARGEN)
+    print(producto)
 
     # Elegimos productos aleatorios, garantizando que al menos 2 mas tengan el mismo precio.
     # De manera aleatoria se deberá tomar el valor económico o el valor premium.

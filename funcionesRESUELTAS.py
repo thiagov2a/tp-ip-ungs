@@ -1,8 +1,4 @@
-from principal import *
-from configuracion import *
 import random
-import math
-from extras import *
 
 
 def lectura():
@@ -10,7 +6,7 @@ def lectura():
 
     with open("productos.txt", "r") as f:  # Abre el archivo de texto
         for linea in f:
-            # Separa los datos por comas
+            # Separa y guarda los datos por comas
             producto, precio_economico, precio_premium = linea.strip().split(",")
 
             # Agrega la línea a la lista
@@ -40,7 +36,7 @@ def dameProducto(lista_productos, margen):
     producto_principal = buscarProducto(lista_productos)
     cont = 0
 
-    while cont <= 2:
+    while cont < 2:
         producto_candidato = buscarProducto(lista_productos)
         if (
             producto_principal[2] == producto_candidato[2]
@@ -79,10 +75,13 @@ def procesar(producto_principal, producto_candidato, margen):
 # De manera aleatoria se deberá tomar el valor económico o el valor premium. Agregar al nombre '(económico)' o '(premium)'
 # para que sea mostrado en pantalla.
 def dameProductosAleatorios(producto, lista_productos, margen):
+    # Inicializamos la lista de productos
     productos_seleccionados = []
-    cont = 0
 
-    while cont <= 2:
+    # Inicializamos el contador
+    cont = 0
+    # Elegimos 2 productos con el mismo precio o dentro del margen
+    while cont < 2:
         producto_candidato = buscarProducto(lista_productos)
         if (
             producto_candidato[2] == producto[2]
@@ -91,11 +90,18 @@ def dameProductosAleatorios(producto, lista_productos, margen):
             productos_seleccionados.append(producto_candidato)
             cont += 1
 
-    while cont <= 5:
+    # Reiniciamos el contador
+    cont = 0
+    # Elegimos 3 productos aleatorios
+    while cont < 3:
         producto_candidato = buscarProducto(lista_productos)
         productos_seleccionados.append(producto_candidato)
         cont += 1
 
+    # Mezclamos los productos
     random.shuffle(productos_seleccionados)
+
+    # Agregamos el producto principal al índice 0
+    productos_seleccionados.insert(0, producto)
 
     return productos_seleccionados
