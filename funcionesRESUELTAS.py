@@ -38,11 +38,12 @@ def dameProducto(lista_productos, margen):
 
     while cont < 2:
         producto_candidato = buscarProducto(lista_productos)
-        if (
-            producto_principal[2] == producto_candidato[2]
-            or abs(producto_principal[2] - producto_candidato[2]) <= margen
-        ):
-            cont += 1
+        if producto_candidato != producto_principal:
+            if (
+                producto_principal[2] == producto_candidato[2]
+                or abs(producto_principal[2] - producto_candidato[2]) <= margen
+            ):
+                cont += 1
 
     return producto_principal
 
@@ -82,21 +83,27 @@ def dameProductosAleatorios(producto, lista_productos, margen):
     cont = 0
     # Elegimos 2 productos con el mismo precio o dentro del margen
     while cont < 2:
+        # Elegimos un producto aleatorio
         producto_candidato = buscarProducto(lista_productos)
-        if (
-            producto_candidato[2] == producto[2]
-            or abs(producto_candidato[2] - producto[2]) <= margen
-        ):
-            productos_seleccionados.append(producto_candidato)
-            cont += 1
+        # Si el producto elegido es distinto al producto principal, entonces lo agregamos a la lista
+        if producto_candidato != producto:
+            if (
+                producto_candidato[2] == producto[2]
+                or abs(producto_candidato[2] - producto[2]) <= margen
+            ):
+                productos_seleccionados.append(producto_candidato)
+                cont += 1
 
     # Reiniciamos el contador
     cont = 0
     # Elegimos 3 productos aleatorios
     while cont < 3:
+        # Elegimos un producto aleatorio
         producto_candidato = buscarProducto(lista_productos)
-        productos_seleccionados.append(producto_candidato)
-        cont += 1
+        # Si el producto elegido es distinto al producto principal, entonces lo agregamos a la lista
+        if producto_candidato != producto:
+            productos_seleccionados.append(producto_candidato)
+            cont += 1
 
     # Mezclamos los productos
     random.shuffle(productos_seleccionados)
