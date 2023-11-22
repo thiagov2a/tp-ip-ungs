@@ -5,7 +5,7 @@ import math
 from extras import *
 
 
-# lee el archivo y carga en la lista lista_producto todas las palabras
+# Lee el archivo y carga en la lista lista_producto todas las palabras
 def lectura():
     return [
         ["Arroz", 1001, 1037],
@@ -25,14 +25,14 @@ def lectura():
     ]
 
 
-# De la lista de productos elige uno al azar y devuelve una lista de 3 elementos, el primero el nombre del producto , el segundo si es económico
-# o premium y el tercero el precio.
+# De la lista de productos elige uno al azar y devuelve una lista de 3 elementos, el primero el nombre del producto,
+# el segundo si es económico o premium y el tercero el precio.
 def buscar_producto(lista_productos):
     producto = ["Silla de oficina", "(premium)", 4391]
     return producto
 
 
-# Elige el producto. Debe tener al menos dos productos con un valor similar
+# Elige el producto. Debe tener al menos dos productos con un valor similar.
 def obtener_producto(lista_productos, margen):
     producto = ["Silla de oficina", "(premium)", 4391]
     return producto
@@ -45,7 +45,7 @@ def es_precio_valido(precio, lista_productos, margen):
 
 # Busca el precio del producto_principal y el precio del producto_candidato, si son iguales o dentro
 # del margen, entonces es valido y suma a la canasta el valor del producto. No suma si eligió directamente
-# el producto
+# el producto.
 def procesar(producto_principal, producto_candidato, margen):
     return 0
 
