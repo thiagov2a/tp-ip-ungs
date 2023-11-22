@@ -35,13 +35,15 @@ def main():
     lista_productos = lectura()  # lista de productos
 
     # Elegir un producto, [producto, calidad, precio]
-    producto = dameProducto(lista_productos, MARGEN)
+    producto = obtener_producto(lista_productos, MARGEN)
     print(producto)
 
     # Elegimos productos aleatorios, garantizando que al menos 2 mas tengan el mismo precio.
     # De manera aleatoria se deberá tomar el valor económico o el valor premium.
     # Agregar  '(económico)' o '(premium)' y el precio
-    productos_en_pantalla = dameProductosAleatorios(producto, lista_productos, MARGEN)
+    productos_en_pantalla = obtener_productos_aleatorios(
+        producto, lista_productos, MARGEN
+    )
     print(productos_en_pantalla)
 
     # dibuja la pantalla la primera vez
@@ -82,9 +84,9 @@ def main():
                         )
                         producto_candidato = ""
                         # Elegir un producto
-                        producto = dameProducto(lista_productos, MARGEN)
+                        producto = obtener_producto(lista_productos, MARGEN)
                         # elegimos productos aleatorios, garantizando que al menos 2 mas tengan el mismo precio
-                        productos_en_pantalla = dameProductosAleatorios(
+                        productos_en_pantalla = obtener_productos_aleatorios(
                             producto, lista_productos, MARGEN
                         )
                     else:

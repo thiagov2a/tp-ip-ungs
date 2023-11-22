@@ -33,13 +33,13 @@ def buscar_producto(lista_productos):
 
 
 # Elige el producto. Debe tener al menos dos productos con un valor similar
-def dameProducto(lista_productos, margen):
+def obtener_producto(lista_productos, margen):
     producto = ["Silla de oficina", "(premium)", 4391]
     return producto
 
 
 # Devuelve True si existe el precio recibido como parámetro aparece al menos 3 veces. Debe considerar el Margen.
-def esUnPrecioValido(precio, lista_productos, margen):
+def es_precio_valido(precio, lista_productos, margen):
     return True
 
 
@@ -53,7 +53,7 @@ def procesar(producto_principal, producto_candidato, margen):
 # Elegimos productos aleatorios, garantizando que al menos 2 tengan el mismo precio.
 # De manera aleatoria se deberá tomar el valor económico o el valor premium. Agregar al nombre '(económico)' o '(premium)'
 # para que sea mostrado en pantalla.
-def dameProductosAleatorios(producto, lista_productos, margen):
+def obtener_productos_aleatorios(producto, lista_productos, margen):
     productos_seleccionados = [
         ["Monitor de computadora", "(premium)", 2870],
         ["Silla de oficina", "(económico)", 3174],
