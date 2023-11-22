@@ -6,4 +6,4 @@
   🌐 Python
 </h1>
 
-📚 Trabajo Práctico Final de Introducción a la Programación de la [Universidad Nacional de General Sarmiento (UNGS)](https://www.ungs.edu.ar/)
+📚 Trabajo Práctico de Introducción a la Programación de la [Universidad Nacional de General Sarmiento (UNGS)](https://www.ungs.edu.ar/)
