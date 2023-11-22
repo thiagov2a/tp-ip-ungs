@@ -28,7 +28,7 @@ def main():
     segundos = TIEMPO_MAX
     fps = FPS_inicial
 
-    puntos = 0  # puntos o dinero acumulado por el jugador
+    carrito_compras = []  # premios acumulados por el jugador
     producto_candidato = ""
 
     # Lee el archivo y devuelve una lista con los productos,
@@ -48,7 +48,12 @@ def main():
 
     # dibuja la pantalla la primera vez
     dibujar(
-        screen, productos_en_pantalla, producto, producto_candidato, puntos, segundos
+        screen,
+        productos_en_pantalla,
+        producto,
+        producto_candidato,
+        carrito_compras,
+        segundos,
     )
 
     while segundos > fps / 1000:
@@ -79,9 +84,14 @@ def main():
                     indice = int(producto_candidato)
                     # chequeamos si el producto no es el producto principal. Si no lo es procesamos el producto
                     if indice < len(productos_en_pantalla):
-                        puntos += procesar(
+                        # procesamos el premio
+                        premio = procesar(
                             producto, productos_en_pantalla[indice], MARGEN
                         )
+                        # si hay un premio, lo agregamos al carrito de compras
+                        if premio != None:
+                            carrito_compras.append(premio)
+                            print(carrito_compras)
                         producto_candidato = ""
                         # Elegir un producto
                         producto = obtener_producto(lista_productos, MARGEN)
@@ -103,7 +113,7 @@ def main():
             productos_en_pantalla,
             producto,
             producto_candidato,
-            puntos,
+            carrito_compras,
             segundos,
         )
 

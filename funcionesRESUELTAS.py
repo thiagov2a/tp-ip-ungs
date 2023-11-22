@@ -71,19 +71,18 @@ def es_precio_valido(precio, lista_productos, margen):
 
 
 # Busca el precio del producto_principal y el precio del producto_candidato, si son iguales o dentro
-# del margen, entonces es valido y suma a la canasta el valor del producto. No suma si eligió directamente
-# el producto.
+# del margen, entonces es valido y agrega al carrito el producto. No agrega si eligió directamente el producto.
 def procesar(producto_principal, producto_candidato, margen):
     # Si el precio del producto candidato es igual al precio del producto principal o está dentro del margen
     if (
         producto_principal[2] == producto_candidato[2]
         or abs(producto_principal[2] - producto_candidato[2]) <= margen
     ):
-        # Suma el valor del producto a la canasta
-        return producto_principal[2]
+        # Agrega el producto al carrito
+        return producto_principal
     else:
-        # No suma el valor del producto a la canasta
-        return 0
+        # No agrega el producto al carrito
+        return None
 
 
 # Elegimos productos aleatorios, garantizando que al menos 2 tengan el mismo precio.
@@ -100,7 +99,7 @@ def obtener_productos_aleatorios(producto, lista_productos, margen):
         # Si el producto candidato es distinto al producto principal y no está en la lista de productos candidatos
         if (
             producto_candidato != producto
-            and productos_seleccionados.count(producto) == 0
+            and productos_seleccionados.count(producto_candidato) == 0
         ):
             # Si el precio del producto candidato es igual al precio del producto principal o está dentro del margen
             if (
@@ -120,7 +119,7 @@ def obtener_productos_aleatorios(producto, lista_productos, margen):
         # Si el producto candidato es distinto al producto principal y no está en la lista de productos candidatos
         if (
             producto_candidato != producto
-            and productos_seleccionados.count(producto) == 0
+            and productos_seleccionados.count(producto_candidato) == 0
         ):
             # Agrega el producto candidato a la lista de productos candidatos
             productos_seleccionados.append(producto_candidato)
