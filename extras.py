@@ -11,20 +11,17 @@ def dameLetraApretada(key):
         return ""
 
 
-def dibujar(
-    screen,
-    productos_en_pantalla,
-    producto_principal,
-    producto_candidato,
-    carrito_compras,
-    segundos,
-):
-    defaultFont = pygame.font.Font(
-        "static/fonts/PixelifySans-VariableFont_wght.ttf", 24
-    )
-    defaultFontGrande = pygame.font.Font(
-        "static/fonts/PixelifySans-VariableFont_wght.ttf", 30
-    )
+def reproducir_efecto_de_sonido(nombre_del_efecto):
+    # Carga el sonido
+    sonido = pygame.mixer.Sound("static/sounds/" + nombre_del_efecto)
+
+    # Reproduce el sonido
+    sonido.play()
+
+
+def dibujar_fondo(screen):
+    # Limpiar pantalla
+    screen.fill(COLOR_FONDO)
 
     # Fondo
     imagen_fondo = pygame.image.load("static/img/background.jpg")
@@ -33,7 +30,44 @@ def dibujar(
     x = ANCHO - imagen_fondo.get_width()
     y = ALTO - imagen_fondo.get_height() - 70
 
+    # Dibujar el fondo
     screen.blit(imagen_fondo, (x, y))
+
+
+def dibujar_premios(screen, carrito_compras):
+    dibujar_fondo(screen)
+
+    defaultFont = pygame.font.Font(
+        "static/fonts/PixelifySans-VariableFont_wght.ttf", 30
+    )
+
+    # Mensaje de fin de juego
+    text = "Fin del juego"
+    text_surface = defaultFont.render(text, True, COLOR_TEXTO)
+    screen.blit(text_surface, (130, ALTO - (ALTO - 100)))
+
+    # Mostrar los premios
+    text = "Premios: " + str(len(carrito_compras)) + " productos"
+    text_surface = defaultFont.render(text, True, COLOR_TEXTO)
+    screen.blit(text_surface, (130, ALTO - (ALTO - 100) + 70))
+
+
+def dibujar(
+    screen,
+    productos_en_pantalla,
+    producto_principal,
+    producto_candidato,
+    carrito_compras,
+    segundos,
+):
+    dibujar_fondo(screen)
+
+    defaultFont = pygame.font.Font(
+        "static/fonts/PixelifySans-VariableFont_wght.ttf", 24
+    )
+    defaultFontGrande = pygame.font.Font(
+        "static/fonts/PixelifySans-VariableFont_wght.ttf", 30
+    )
 
     # Linea del piso
     pygame.draw.line(screen, (255, 255, 255), (0, ALTO - 70), (ANCHO, ALTO - 70), 5)

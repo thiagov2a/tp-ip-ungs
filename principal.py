@@ -90,8 +90,11 @@ def main():
                         )
                         # si hay un premio, lo agregamos al carrito de compras
                         if premio != None:
+                            reproducir_efecto_de_sonido("success.wav")
                             carrito_compras.append(premio)
                             print(carrito_compras)
+                        else:
+                            reproducir_efecto_de_sonido("fail.wav")
                         producto_candidato = ""
                         # Elegir un producto
                         producto = obtener_producto(lista_productos, MARGEN)
@@ -119,12 +122,18 @@ def main():
 
         pygame.display.flip()
 
+    # Fin del juego
+    if segundos <= 0:
+        reproducir_efecto_de_sonido("win.ogg")
+        dibujar_premios(screen, carrito_compras)
+
     while 1:
-        # Esperar el QUIT del usuario
+        # Esperar al usuario
         for e in pygame.event.get():
             if e.type == QUIT:
                 pygame.quit()
                 return
+        pygame.display.flip()
 
 
 # Programa Principal ejecuta Main
